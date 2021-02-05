@@ -26,6 +26,7 @@ public class Main {
 		
 		List<Square> squares = allSquares(grid);
 		Graph squareGraph = new Graph(squares);
+		squareGraph.bfs(squares.get(0));
 		
 		
 		
@@ -36,8 +37,8 @@ public class Main {
 		List<Square> squares = new ArrayList<>();
 		for (int i=0; i<16; i++) {
 			for(int j=0; j<16; j++) {
-				if(grid[i][j] == 1 || grid[i][j] == 3) {
-					squares.add(new Square(j, i));
+				if(grid[i][j] != 2) {
+					squares.add(new Square(j, i)); //has to be flipped cuz grid was flipped
 				}
 			}
 		}
@@ -56,6 +57,10 @@ class Square{
 		this.y = y;
 	}
 	
+	public String toString() { //debug purposes
+		return x +" "+ y;
+	}
+	
 	boolean isConnected(Square square) {
 		if (square.x == x+1 && square.y == y) {
 			return true;
@@ -72,6 +77,8 @@ class Square{
 
 class Graph{
 	HashMap<Square, List<Square>> graphDict = new HashMap<>();
+	HashMap<Square, Integer> distanceMap = new HashMap<>();
+	HashMap<Square, Square> preMap = new HashMap<>();
 	
 	Graph(List<Square> squareList){
 		
@@ -89,7 +96,47 @@ class Graph{
 		}
 	}
 	
-	//List<Square> findShortestPath() 
+	void bfs(Square start) {	//i think this is bfs	
+		List<Square> visited = new ArrayList<>();
+		List<Square> queue = new ArrayList<>(); 
+		List<Square> queue2 = new ArrayList<>();
+		
+		distanceMap.put(start, 0);
+		queue.add(start);
+		visited.add(start);
+		
+		Square current;
+		Square currentAdjSquare;
+		List<Square> adjSquares;
+		int distance = 1;
+		
+		while(queue.size() > 0 || queue2.size() > 0) {
+			current = queue.get(0);
+			queue.remove(0);
+			adjSquares = graphDict.get(current);
+			
+			for(int i=0; i<adjSquares.size(); i++) {
+				currentAdjSquare = adjSquares.get(i);
+				if(!visited.contains(currentAdjSquare)) {
+					visited.add(currentAdjSquare);
+					distanceMap.put(currentAdjSquare, distance);
+					preMap.put(currentAdjSquare, current);
+					
+					queue2.add(currentAdjSquare);
+				}
+			}
+			
+			if(queue.size() == 0) {//finish all squares at one level before moving onto the next
+				queue.addAll(queue2);
+				queue2.clear();
+				distance++;
+			}
+		}
+	}
+	
+	//List<Square> findShortestPath(Square start, Square end) {
+		
+	//}
 	
 	
 	
