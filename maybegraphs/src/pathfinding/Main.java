@@ -24,8 +24,24 @@ public class Main {
 		   {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
 		   };
 		
+		List<Square> squares = allSquares(grid);
+		Graph squareGraph = new Graph(squares);
+		
+		
 		
 
+	}
+	
+	static List<Square> allSquares(int[][] grid){
+		List<Square> squares = new ArrayList<>();
+		for (int i=0; i<16; i++) {
+			for(int j=0; j<16; j++) {
+				if(grid[i][j] == 1 || grid[i][j] == 3) {
+					squares.add(new Square(j, i));
+				}
+			}
+		}
+		return squares;
 	}
 
 }
@@ -55,7 +71,7 @@ class Square{
 }
 
 class Graph{
-	HashMap<Square, List<int[]>> graphDict = new HashMap<>();
+	HashMap<Square, List<Square>> graphDict = new HashMap<>();
 	
 	Graph(List<Square> squareList){
 		
@@ -63,15 +79,18 @@ class Graph{
 			graphDict.put(i, new ArrayList<>());
 		}
 		
+		//adjacency list
 		for (Square square : squareList) { //could be optimized
 			for(Square inner : squareList) {
 				if (square.isConnected(inner)) {
-					graphDict.get(square).add(new int[] {inner.x, inner.y});
+					graphDict.get(square).add(inner);
 				}
 			}
-			
 		}
 	}
+	
+	//List<Square> findShortestPath() 
+	
 	
 	
 }
