@@ -26,7 +26,7 @@ public class Main {
 		
 		List<Square> squares = allSquares(grid);
 		Graph squareGraph = new Graph(squares);
-		squareGraph.bfs(squares.get(0));
+		System.out.println(squareGraph.findShortestPath(squares.get(3), squares.get(30)));
 		
 		
 		
@@ -134,9 +134,18 @@ class Graph{
 		}
 	}
 	
-	//List<Square> findShortestPath(Square start, Square end) {
+	List<Square> findShortestPath(Square start, Square end) {
+		this.bfs(start);
+		List<Square> path = new ArrayList<>();
+		Square current = end;
 		
-	//}
+		for(int i=0; i<distanceMap.get(end); i++) {
+			path.add(preMap.get(current));
+			current = preMap.get(current);
+		}
+		
+		return path;
+	}
 	
 	
 	
