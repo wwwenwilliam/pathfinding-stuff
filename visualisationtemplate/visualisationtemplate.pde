@@ -1,7 +1,6 @@
 
 Grid grid = new Grid(40, 20, new int[]{0, 0}, new int[]{30, 15});
 Button bottomButton = new Button(310, 510, 180, 80);
-Bfs bfs = new Bfs();
 List<int[]> path = new ArrayList();
 
 void setup() {
@@ -17,7 +16,7 @@ void draw(){
   grid.drawGrid(0, 0);
   bottomButton.drawButton("Find Path");
   
-  path = bfs.bfs(grid.getSquares(), grid.getStart(), grid.getGoal());
+  //path = null;
   grid.addPath(path);
 
 }
@@ -31,7 +30,7 @@ void mouseDragged(){
 void mousePressed(){
   if (bottomButton.isClicked()){
     grid.clearPath();
-    path = bfs.bfs(grid.getSquares(), grid.getStart(), grid.getGoal());
+    path = null;
     grid.addPath(path);
   }
 }
