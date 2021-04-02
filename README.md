@@ -1,2 +1,7 @@
 # graph-exploration
-exploring graph algorithms & becoming more familiar with github
+exploring graph/pathfinding stuff
+Done: bfs
+
+In progress: visualisation
+
+Todo: A*
