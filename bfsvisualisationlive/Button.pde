@@ -24,9 +24,11 @@ class Button {
     return false;
   }
   
-  void drawButton() {
+  void drawButton(String message) {
     fill(buttonColor);
     rect(x, y, lenX, lenY);
+    fill(0);
+    text(message, x+lenX/2, y+lenY/2);
   }
   
   

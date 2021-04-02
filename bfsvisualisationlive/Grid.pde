@@ -26,6 +26,26 @@ class Grid {
     return lenY;
   }
   
+  int[][] getSquares(){
+    return squares;
+  }
+  
+  int[] getStart(){
+    return start;
+  }
+  
+  int[] getGoal(){
+    return goal;
+  }
+  
+  int getGridSpot(int x, int y){
+    return squares[x][y];
+  }
+  
+  void setGridSpot(int x, int y, int thing){
+    squares[x][y] = thing;
+  }
+  
   void drawGrid(int x, int y) {
     //draws grid to screen
     int gridNum;
@@ -39,6 +59,7 @@ class Grid {
             fill(255);
             break;
           case 1:
+            //wall
             fill(50);
             break;
           case 2:
@@ -76,8 +97,23 @@ class Grid {
     } catch (ArrayIndexOutOfBoundsException e) {
       //mouse out of range
     }
-    
-
+      
+  }
+  
+  void addPath(List<int[]> path){
+    for (int[] position : path){
+      if (squares[position[0]][position[1]] == 0 || squares[position[0]][position[1]] == 2)
+        squares[position[0]][position[1]] = 3;
+    }
+  }
+  
+  void clearPath(){
+    for(int i=0; i<lenX; i++){
+      for(int j=0; j<lenY; j++){
+        if (squares[i][j] == 3)
+          squares[i][j] = 0;
+      }
+    }
     
   }
   
