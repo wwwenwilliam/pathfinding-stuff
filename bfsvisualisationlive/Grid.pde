@@ -117,4 +117,27 @@ class Grid {
     
   }
   
+  void clearWalls(){
+    for(int i=0; i<lenX; i++){
+      for(int j=0; j<lenY; j++){
+        if (squares[i][j] == 1)
+          squares[i][j] = 0;
+      }
+    }
+    
+  }
+  
+  void genRandomMap(){
+    this.clearWalls();
+    for(int i=0; i<lenX; i++){
+      for(int j=0; j<lenY; j++){
+        if (squares[i][j] == 0 || squares[i][j] == 3) {
+          if (random(0, 100) > 80)
+            squares[i][j] = 1;
+        }
+      }
+    }
+    
+  }
+  
 }

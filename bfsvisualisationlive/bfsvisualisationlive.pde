@@ -15,7 +15,7 @@ void draw(){
   background(0);
   
   grid.drawGrid(0, 0);
-  bottomButton.drawButton("Find Path");
+  bottomButton.drawButton("Random map");
   
   path = bfs.bfs(grid.getSquares(), grid.getStart(), grid.getGoal());
   grid.addPath(path);
@@ -27,12 +27,10 @@ void mouseDragged(){
   grid.switchWall();
 }
 
-/*
+
 void mousePressed(){
   if (bottomButton.isClicked()){
     grid.clearPath();
-    path = bfs.bfs(grid.getSquares(), grid.getStart(), grid.getGoal());
-    grid.addPath(path);
+    grid.genRandomMap();
   }
 }
-*/
