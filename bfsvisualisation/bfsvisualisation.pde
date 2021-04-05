@@ -20,22 +20,15 @@ void draw(){
   grid.drawGrid(0, 0);
   bottomButton.drawButton("Random map");
   
-  if (bfs.bfsStep())
-    delay(50);
     
   path = bfs.findPath();
   if (path != null){
     grid.addPath(path);
+  } else {
+    if (bfs.bfsStep())
+      delay(50);
   }
 }
-
-
-void mouseDragged(){
-  grid.clearPath();
-  grid.switchWall();
-}
-
-
 
 void mouseReleased(){
   if (bottomButton.isClicked()){
