@@ -50,6 +50,16 @@ class Bfs {
     
   }
   
+  void randomiseStart(){
+    start = squares.get(int(random(0, squares.size()/2)));
+    display.setGridSpot(start.x, start.y, 4);
+  }
+  
+  void randomiseGoal(){
+    goal = squares.get(int(random(squares.size()/2, squares.size())));
+    display.setGridSpot(goal.x, goal.y, 5);
+  }
+  
   //processing only updates screen @ end of draw
   void bfsStart(){
     if (!(started)){

@@ -4,14 +4,10 @@ class Grid {
   int[][] squares;
   int lenX;
   int lenY;
-  int[] start;
-  int[] goal;
   
-  Grid(int ilenX, int ilenY, int[] istart, int[] igoal){
+  Grid(int ilenX, int ilenY, int[] start, int[] goal){
     lenX = ilenX;
     lenY = ilenY;
-    start = istart;
-    goal = igoal;
     squares = new int[lenX][lenY];
     
     squares[start[0]][start[1]] = 4;
@@ -30,14 +26,6 @@ class Grid {
     return squares;
   }
   
-  int[] getStart(){
-    return start;
-  }
-  
-  int[] getGoal(){
-    return goal;
-  }
-  
   int getGridSpot(int x, int y){
     return squares[x][y];
   }
@@ -51,6 +39,17 @@ class Grid {
       squares[x][y] = 2;
     }
   }
+  
+  void clearImportantPoints(){
+    for(int i=0; i<lenX; i++){
+      for(int j=0; j<lenY; j++){
+        if (squares[i][j] == 4 || squares[i][j] == 5){
+          squares[i][j] = 0;
+        }
+      }
+    }
+  }
+
   
   void drawGrid(int x, int y) {
     //draws grid to screen
@@ -81,7 +80,7 @@ class Grid {
             fill(255, 0, 0);
             break;
           case 5:
-            //fill
+            //goal
             fill(0, 0, 255);
             break;
         }
