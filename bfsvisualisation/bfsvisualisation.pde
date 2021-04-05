@@ -32,12 +32,14 @@ void draw(){
 
 void mouseReleased(){
   if (bottomButton.isClicked()){
-    grid.clearPath();
-    grid.genRandomMap();
-    
-    grid.clearImportantPoints();
-    bfs.randomiseStart();
-    bfs.randomiseGoal();
-    bfs.bfsStart();
+    if (!bfs.isStarted()){
+      grid.clearPath();
+      grid.genRandomMap();
+      
+      grid.clearImportantPoints();
+      bfs.randomiseStart();
+      bfs.randomiseGoal();
+      bfs.bfsStart();
+    }
   }
 }

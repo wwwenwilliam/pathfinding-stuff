@@ -37,6 +37,10 @@ class Bfs {
     
   }
   
+  boolean isStarted(){
+    return started;
+  }
+  
   void findWalls(int[][] grid){
     for (int i=0; i<grid.length; i++) {
       for (int j=0; j<grid[i].length; j++){
@@ -61,7 +65,7 @@ class Bfs {
   }
   
   //processing only updates screen @ end of draw
-  void bfsStart(){
+  boolean bfsStart(){
     if (!(started)){
       queue.clear();
       visited.clear();
@@ -71,6 +75,9 @@ class Bfs {
       searched = false;
       
       this.findWalls(display.squares);
+      return true;
+    } else {
+      return false;
     }
   }
   
