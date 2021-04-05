@@ -73,26 +73,26 @@ class Grid {
             break;
           case 3:
             //path
-            fill(0, 255, 0);
+            fill(0, 0, 255);
             break;
           case 4:
             //start
-            fill(255, 0, 0);
+            fill(0, 255, 0);
             break;
           case 5:
             //goal
-            fill(0, 0, 255);
+            fill(255, 0, 0);
             break;
         }
-        square(x+i*25, y+j*25, 25);
+        square(x+i*10, y+j*10, 10);
       }
     }
   }
   
   void switchWall(){
     //makes or deletes wall
-    int x = mouseX/25;
-    int y = mouseY/25;
+    int x = mouseX/10;
+    int y = mouseY/10;
     
     try {
       if (mouseButton == RIGHT)

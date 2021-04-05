@@ -1,7 +1,7 @@
 import java.util.*;
 
 
-Grid grid = new Grid(32, 20, new int[]{0, 0}, new int[]{30, 15});
+Grid grid = new Grid(80, 50, new int[]{0, 0}, new int[]{30, 15});
 Button bottomButton = new Button(310, 510, 180, 80);
 Bfs bfs = new Bfs(grid, new int[]{0, 0}, new int[]{30, 15});
 List<Square> path = new ArrayList();
