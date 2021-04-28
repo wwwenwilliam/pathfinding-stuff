@@ -6,6 +6,8 @@ abstract class BaseSearch implements Search{
   
   ArrayList<Square> squares = new ArrayList();
   Map<Square, ArrayList<Square>> adjSquares = new HashMap();
+  ArrayList<Square> visited = new ArrayList();
+  ArrayList<Square> queue = new ArrayList();
   Square start;
   Square goal;
   
@@ -47,7 +49,10 @@ abstract class BaseSearch implements Search{
     
   }
   
-  
-  
+  void startFind(){
+    readGrid();
+    started = true;
+    queue.add(start);
+  }
   
 }
