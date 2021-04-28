@@ -44,10 +44,4 @@ class Square {
     
   }
   
-  
-  
-  
-  
-  
-  
 }

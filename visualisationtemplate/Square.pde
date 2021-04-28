@@ -1,22 +1,31 @@
 
 
-class BaseSquare{
+class Square{
   
   int x;
   int y;
-  BaseSquare previous;
+  Square previous;
   
-  BaseSquare(int ix, int iy){
+  Square(int ix, int iy){
     x = ix;
     y = iy;
     
+  }
+  
+  Square(int[] pos){
+    x = pos[0];
+    y = pos[1];
   }
   
   String toString(){
     return (str(x) + " " + str(y));
   }
   
-  boolean isBeside(BaseSquare squ){
+  int findDistance(Square squ){
+    return (abs(x-squ.x) + abs(y-squ.y));
+  }
+  
+  boolean isBeside(Square squ){
     
     if (abs(this.x - squ.x) <= 1){
       if (abs(this.y - squ.y) <= 1) {
@@ -27,7 +36,7 @@ class BaseSquare{
     
   }
   
-  boolean isBeside(BaseSquare square, int noDiagonal){
+  boolean isBeside(Square square, int noDiagonal){
     //add any int to noDiagonal to stop diagonal movement
     
     if (square.x == x+1 && square.y == y) {
