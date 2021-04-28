@@ -26,7 +26,7 @@ void draw(){
     grid.addPath(path);
   } else {
     if (bfs.bfsStep())
-      delay(50);
+     delay(50);
   }
 }
 

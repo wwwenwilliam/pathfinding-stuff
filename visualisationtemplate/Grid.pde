@@ -46,6 +46,10 @@ class Grid {
     squares[x][y] = thing;
   }
   
+  void setGridSpot(int[] squ, int thing){
+    squares[squ[0]][squ[1]] = thing;
+  }
+  
   void drawGrid(int x, int y) {
     //draws grid to screen
     int gridNum;
@@ -100,21 +104,30 @@ class Grid {
       
   }
   
-  void addPath(List<int[]> path){
-    for (int[] position : path){
-      if (squares[position[0]][position[1]] == 0 || squares[position[0]][position[1]] == 2)
-        squares[position[0]][position[1]] = 3;
+  void clearSquares(){
+    for(int i=0; i<lenX; i++){
+      for(int j=0; j<lenY; j++){
+        squares[i][j] = 0;
+      }
     }
   }
   
-  void clearPath(){
+  void genRandomMap(){
+    clearSquares();
     for(int i=0; i<lenX; i++){
       for(int j=0; j<lenY; j++){
-        if (squares[i][j] == 3)
-          squares[i][j] = 0;
+        if (squares[i][j] == 0 || squares[i][j] == 3) {
+          if (random(0, 100) > 75)
+            squares[i][j] = 1;
+        }
       }
     }
     
+    start = new int[]{int(random(0, lenX)), int(random(0, lenY))};
+    setGridSpot(start, 4);
+    
+    goal = new int[]{int(random(0, lenX)), int(random(0, lenY))};
+    setGridSpot(goal, 5);
   }
   
 }
