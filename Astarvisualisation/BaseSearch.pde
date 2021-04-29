@@ -29,8 +29,8 @@ abstract class BaseSearch implements Search{
     
     int[][] walls = grid.getSquares();
     for (int i=0; i<walls.length; i++){
-      for (int j=0; j<walls.length; j++){
-        if (walls[i][j] == 1) {
+      for (int j=0; j<walls[i].length; j++){
+        if (walls[i][j] == 0) {
           squares.add(new Square(i, j));
         }
       }
@@ -50,9 +50,17 @@ abstract class BaseSearch implements Search{
   }
   
   void startFind(){
+    squares = new ArrayList();
+    adjSquares = new HashMap();
+    visited = new ArrayList();
+    queue = new ArrayList();
+    start = null;
+    goal = null;
+    
     readGrid();
     started = true;
     queue.add(start);
+    start.distance = 0;
   }
   
 }

@@ -123,10 +123,10 @@ class Grid {
       }
     }
     
-    start = new int[]{int(random(0, lenX)), int(random(0, lenY))};
+    start = new int[]{int(random(0, lenX/2)), int(random(0, lenY/2))};
     setGridSpot(start, 4);
     
-    goal = new int[]{int(random(0, lenX)), int(random(0, lenY))};
+    goal = new int[]{int(random(lenX/2, lenX)), int(random(lenY/2, lenY))};
     setGridSpot(goal, 5);
   }
   
