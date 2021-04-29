@@ -25,6 +25,11 @@ class Astar extends BaseSearch{
       }
     }
     
+    if (valueMap.isEmpty()){
+      println("no path");
+      return;
+    }
+    
     //find lowest cost squares, put in priority queue
     int minValue = Collections.min(valueMap.keySet());
     ArrayList<Square> pQueue = valueMap.get(minValue);
@@ -41,7 +46,6 @@ class Astar extends BaseSearch{
         while (path != start){
           grid.setGridSpot(path.x, path.y, 3);
           path = path.previous;
-          println(path);
         }
       }
       
@@ -67,7 +71,7 @@ class Astar extends BaseSearch{
   }
   
   int findScore(Square squ){
-    return (int) (squ.findDistance(start) + squ.findDistance(goal));
+    return (int) (squ.findDistance(start, 1) + squ.findDistance(goal, 1));
   }
   
   

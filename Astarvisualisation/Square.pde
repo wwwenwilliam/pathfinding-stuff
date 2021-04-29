@@ -26,6 +26,10 @@ class Square{
     return (int) Math.sqrt((squ.y - y) * (squ.y - y) + (squ.x - x) * (squ.x - x));
   }
   
+  int findDistance(Square squ, int noDiagonal){
+    return abs(squ.y - y) + abs(squ.x - x);
+  }
+  
   boolean isBeside(Square squ){
     
     if (abs(this.x - squ.x) <= 1){

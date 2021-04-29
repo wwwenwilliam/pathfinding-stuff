@@ -38,7 +38,7 @@ abstract class BaseSearch implements Search{
     
     for (Square squ : squares){
       for (Square possible : squares){
-        if (squ.isBeside(possible)){
+        if (squ.isBeside(possible, 1)){
           if (!adjSquares.containsKey(squ)) {
             adjSquares.put(squ, new ArrayList());
           }
