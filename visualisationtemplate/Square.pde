@@ -5,6 +5,7 @@ class Square{
   int x;
   int y;
   Square previous;
+  int distance = Integer.MAX_VALUE;
   
   Square(int ix, int iy){
     x = ix;
@@ -22,7 +23,7 @@ class Square{
   }
   
   int findDistance(Square squ){
-    return (abs(x-squ.x) + abs(y-squ.y));
+    return (int) Math.sqrt((squ.y - y) * (squ.y - y) + (squ.x - x) * (squ.x - x));
   }
   
   boolean isBeside(Square squ){
